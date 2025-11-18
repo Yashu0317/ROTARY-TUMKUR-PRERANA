@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* initial hidden */
+.wow {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.wow.animated {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Fade Up */
+@keyframes rrfadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rrfadeUp {
+  animation-name: rrfadeUp;
+  animation-fill-mode: both;
+}
+
+/* Fade Right */
+@keyframes rrfadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.rrfadeRight {
+  animation-name: rrfadeRight;
+  animation-fill-mode: both;
+}
+
+/* Fade Left */
+@keyframes rrfadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.rrfadeLeft {
+  animation-name: rrfadeLeft;
+  animation-fill-mode: both;
+}
+
+.rr-work-thumb img {
+  width: 260px;
+  height: 260px;        
+  object-fit: cover;    
+  border-radius: 12px;  
+  align-items: center;
+}
