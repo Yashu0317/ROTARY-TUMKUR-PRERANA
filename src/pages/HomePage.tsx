@@ -19,6 +19,7 @@ interface ClubProject {
   category: string;
   image_url?: string;
   created_at: string;
+  
 }
 
 interface Event {
@@ -100,7 +101,7 @@ const workProjects = [
     description: "Free health checkups and medical camps for underserved communities",
     category: "Healthcare",
     image: "/src/images/Healthcare.jpg",
-    impact: "500+ people served"
+    // impact: "500+ people served"
   },
   {
     id: 2,
@@ -108,15 +109,15 @@ const workProjects = [
     description: "Scholarships and educational support for underprivileged children",
     category: "Education",
     image: "/src/images/Education.jpg",
-    impact: "200+ students supported"
+    // impact: "200+ students supported"
   },
   {
   id: 3,
   title: "Community Orientation Program",
   description: "Educational orientation sessions on health, hygiene, and community development",
   category: "Education",
-  image: "/src/images/Social Welfare.jpg",
-  impact: "500+ community members oriented"
+  image: "/src/images/Social welfare.jpg",
+  // impact: "500+ community members oriented"
 },
   {
     id: 4,
@@ -124,7 +125,7 @@ const workProjects = [
     description: "Skill development and entrepreneurship programs for women",
     category: "Social Welfare",
     image: "/src/images/womenemp.jpg",
-    impact: "150+ women trained"
+    // impact: "150+ women trained"
   },
   {
     id: 5,
@@ -132,7 +133,7 @@ const workProjects = [
     description: "Large-scale tree plantation to combat climate change",
     category: "Environment",
     image: "/src/images/plantation.jpg",
-    impact: "5000+ trees planted"
+    // impact: "5000+ trees planted"
   },
   {
     id: 6,
@@ -140,7 +141,7 @@ const workProjects = [
     description: "Emergency aid and support during natural calamities",
     category: "Relief",
     image: "/src/images/relief.jpg",
-    impact: "1000+ families helped"
+    // impact: "1000+ families helped"
   }
 ];
 
@@ -310,7 +311,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     alt="Umamahesha A"
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400';
+                      e.currentTarget.src = '/src/images/Rtn-Umamahesha-A.jpg';
                     }}
                   />
                 </div>
@@ -329,7 +330,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     alt="Vijayakumari N"
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400';
+                      e.currentTarget.src = '/src/images/Rtn-Vijaya-Kumari-N.jpg';
                     }}
                   />
                 </div>

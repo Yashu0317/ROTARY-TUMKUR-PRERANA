@@ -35,25 +35,31 @@ export default function ClubNewsLetter() {
   }, [newsletters, searchQuery, selectedYear, selectedMonth]);
 
   const loadClubNewsletters = async () => {
-    try {
-      setLoading(true);
-      
-      const response = await fetch(`${API_BASE_URL}/newsletters`);
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch newsletters');
-      }
-      
-      const data = await response.json();
-      setNewsletters(data || []);
-      
-    } catch (error) {
-      console.error('Error loading newsletters:', error);
-      alert('Failed to load newsletters');
-    } finally {
-      setLoading(false);
+  try {
+    setLoading(true);
+
+    const response = await fetch(`${API_BASE_URL}/newsletters`);
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch newsletters');
     }
-  };
+
+    const result = await response.json();
+
+    setNewsletters(
+      Array.isArray(result)
+        ? result
+        : Array.isArray(result.data)
+        ? result.data
+        : []
+    );
+  } catch (error) {
+    console.error('Error loading newsletters:', error);
+    setNewsletters([]);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const filterNewsletters = () => {
     let filtered = newsletters;

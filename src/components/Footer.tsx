@@ -46,14 +46,14 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            {/* <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-blue-100">
               <li><a href="#" className="hover:text-yellow-400 transition">Rotary International</a></li>
               <li><a href="#" className="hover:text-yellow-400 transition">My Rotary</a></li>
               <li><a href="#" className="hover:text-yellow-400 transition">Rotary Foundation</a></li>
               <li><a href="#" className="hover:text-yellow-400 transition">District Resources</a></li>
               <li><a href="#" className="hover:text-yellow-400 transition">Contact Us</a></li>
-            </ul>
+            </ul> */}
           </div>
 
           {/* Contact Info */}

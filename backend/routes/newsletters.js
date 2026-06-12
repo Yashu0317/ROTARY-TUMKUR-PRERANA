@@ -3,9 +3,10 @@ const router = express.Router();
 const Newsletter = require('../models/Newsletter');
 
 // GET all newsletters
-router.get('/club-newsletters', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const newsletters = await Newsletter.findAll();
+
     res.json({
       success: true,
       data: newsletters,
@@ -22,15 +23,17 @@ router.get('/club-newsletters', async (req, res) => {
 });
 
 // GET single newsletter by ID
-router.get('/club-newsletters/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const newsletter = await Newsletter.findById(req.params.id);
+
     if (!newsletter) {
       return res.status(404).json({
         success: false,
         error: 'Newsletter not found'
       });
     }
+
     res.json({
       success: true,
       data: newsletter
@@ -45,13 +48,13 @@ router.get('/club-newsletters/:id', async (req, res) => {
   }
 });
 
-// POST create new newsletter
-router.post('/club-newsletters', async (req, res) => {
+// CREATE newsletter
+router.post('/', async (req, res) => {
   try {
     console.log('Creating newsletter with data:', req.body);
-    
+
     const result = await Newsletter.create(req.body);
-    
+
     res.status(201).json({
       success: true,
       message: 'Newsletter created successfully',
@@ -70,18 +73,18 @@ router.post('/club-newsletters', async (req, res) => {
   }
 });
 
-// PUT update newsletter
-router.put('/club-newsletters/:id', async (req, res) => {
+// UPDATE newsletter
+router.put('/:id', async (req, res) => {
   try {
     const result = await Newsletter.update(req.params.id, req.body);
-    
+
     if (result.affectedRows === 0) {
       return res.status(404).json({
         success: false,
         error: 'Newsletter not found'
       });
     }
-    
+
     res.json({
       success: true,
       message: 'Newsletter updated successfully',
@@ -101,17 +104,17 @@ router.put('/club-newsletters/:id', async (req, res) => {
 });
 
 // DELETE newsletter
-router.delete('/club-newsletters/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const result = await Newsletter.delete(req.params.id);
-    
+
     if (result.affectedRows === 0) {
       return res.status(404).json({
         success: false,
         error: 'Newsletter not found'
       });
     }
-    
+
     res.json({
       success: true,
       message: 'Newsletter deleted successfully'
@@ -126,16 +129,15 @@ router.delete('/club-newsletters/:id', async (req, res) => {
   }
 });
 
-// GET governor newsletters (placeholder)
-router.get('/governor-newsletters', async (req, res) => {
+// GET governor newsletters
+router.get('/governor-newsletters/list', async (req, res) => {
   try {
-    // For now, return empty array or demo data
     res.json({
       success: true,
       data: [],
-      message: 'Governor newsletters endpoint - implement logic as needed'
+      message: 'Governor newsletters endpoint'
     });
-  } catch ( error) {
+  } catch (error) {
     console.error('Error fetching governor newsletters:', error);
     res.status(500).json({
       success: false,
@@ -146,7 +148,7 @@ router.get('/governor-newsletters', async (req, res) => {
 });
 
 // GET newsletter types
-router.get('/newsletter-types', async (req, res) => {
+router.get('/newsletter-types/list', async (req, res) => {
   try {
     res.json({
       success: true,
@@ -167,25 +169,16 @@ router.get('/newsletter-types', async (req, res) => {
   }
 });
 
-// GET newsletter statistics
-router.get('/statistics', async (req, res) => {
+// GET statistics
+router.get('/statistics/list', async (req, res) => {
   try {
     const newsletters = await Newsletter.findAll();
-    
+
     const stats = {
       total: newsletters.length,
-      active: newsletters.filter(n => n.is_active).length,
-      byType: {
-        club: newsletters.filter(n => n.newsletter_type === 'club').length,
-        governor: newsletters.filter(n => n.newsletter_type === 'governor').length,
-        district: newsletters.filter(n => n.newsletter_type === 'district').length,
-        international: newsletters.filter(n => n.newsletter_type === 'international').length
-      },
-      recentUploads: newsletters
-        .sort((a, b) => new Date(b.published_date) - new Date(a.published_date))
-        .slice(0, 5)
+      active: newsletters.filter(n => n.is_active).length
     };
-    
+
     res.json({
       success: true,
       data: stats
@@ -200,22 +193,24 @@ router.get('/statistics', async (req, res) => {
   }
 });
 
-// PATCH toggle newsletter status
-router.patch('/club-newsletters/:id/toggle-status', async (req, res) => {
+// TOGGLE status
+router.patch('/:id/toggle-status', async (req, res) => {
   try {
     const newsletter = await Newsletter.findById(req.params.id);
+
     if (!newsletter) {
       return res.status(404).json({
         success: false,
         error: 'Newsletter not found'
       });
     }
-    
+
     const updatedStatus = !newsletter.is_active;
-    const result = await Newsletter.update(req.params.id, { 
-      is_active: updatedStatus 
+
+    await Newsletter.update(req.params.id, {
+      is_active: updatedStatus
     });
-    
+
     res.json({
       success: true,
       message: `Newsletter ${updatedStatus ? 'activated' : 'deactivated'} successfully`,
@@ -234,37 +229,37 @@ router.patch('/club-newsletters/:id/toggle-status', async (req, res) => {
   }
 });
 
-// GET search newsletters
-router.get('/search', async (req, res) => {
+// SEARCH newsletters
+router.get('/search/list', async (req, res) => {
   try {
     const { query, type, year } = req.query;
+
     let newsletters = await Newsletter.findAll();
-    
-    // Apply filters
+
     if (query) {
-      newsletters = newsletters.filter(newsletter => 
-        newsletter.title.toLowerCase().includes(query.toLowerCase()) ||
+      newsletters = newsletters.filter(newsletter =>
+        newsletter.title?.toLowerCase().includes(query.toLowerCase()) ||
         newsletter.description?.toLowerCase().includes(query.toLowerCase())
       );
     }
-    
+
     if (type) {
-      newsletters = newsletters.filter(newsletter => 
-        newsletter.newsletter_type === type
+      newsletters = newsletters.filter(
+        newsletter => newsletter.newsletter_type === type
       );
     }
-    
+
     if (year) {
-      newsletters = newsletters.filter(newsletter => 
-        new Date(newsletter.published_date).getFullYear().toString() === year
+      newsletters = newsletters.filter(
+        newsletter =>
+          new Date(newsletter.published_date).getFullYear().toString() === year
       );
     }
-    
+
     res.json({
       success: true,
       data: newsletters,
-      count: newsletters.length,
-      filters: { query, type, year }
+      count: newsletters.length
     });
   } catch (error) {
     console.error('Error searching newsletters:', error);

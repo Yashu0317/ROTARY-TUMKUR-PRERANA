@@ -935,8 +935,13 @@ export default function AdminDashboard() {
         throw new Error(`Failed to fetch items: ${response.statusText}`);
       }
       
-      const data = await response.json();
-      setItems(Array.isArray(data) ? data : []);
+      const result = await response.json();
+
+if (activeTab === 'newsletters') {
+  setItems(Array.isArray(result.data) ? result.data : []);
+} else {
+  setItems(Array.isArray(result) ? result : []);
+}
     } catch (error) {
       console.error('Error loading items:', error);
       alert('Failed to load items');

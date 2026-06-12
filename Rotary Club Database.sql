@@ -209,6 +209,7 @@ CREATE TABLE committee_members (
 select * from committee_members;
 
 
+
 -- 6. Join Requests - Updated for specific requirements
 CREATE TABLE join_requests (
     id INT PRIMARY KEY AUTO_INCREMENT,

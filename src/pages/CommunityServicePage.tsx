@@ -236,11 +236,18 @@ export default function CommunityServicePage({ onNavigate }: { onNavigate: (page
                   {/* Service Image */}
                   {service.image_url && (
                     <div className="h-48 bg-gray-200 overflow-hidden">
-                      <img 
-                        src={service.image_url} 
-                        alt={service.heading}
-                        className="w-full h-full object-cover"
-                      />
+                      <img
+  src={
+    service.image_url?.startsWith('http')
+      ? service.image_url
+      : `http://localhost:5000${service.image_url}`
+  }
+  alt={service.heading}
+  className="w-full h-full object-cover"
+  onError={(e) => {
+    console.log('Image failed:', service.image_url);
+  }}
+/>
                     </div>
                   )}
                   
