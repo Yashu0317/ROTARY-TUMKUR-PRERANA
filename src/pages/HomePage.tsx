@@ -50,7 +50,7 @@ const mockOfficers: DistrictOfficer[] = [
     name: 'Vijayakumari N',
     title: 'SECRETARY',
     club_name: 'Rotary Tumkur Prerana',
-    photo_url: '/images/Rtn-Vijaya-Kumari-N.jpg',
+    photo_url: 'src/images/Rtn-Vijaya-Kumari-N.jpg',
     order_position: 2
   },
 ];
@@ -100,7 +100,7 @@ const workProjects = [
     title: "Community Health Camp",
     description: "Free health checkups and medical camps for underserved communities",
     category: "Healthcare",
-    image: "/images/Healthcare.jpg",
+    image: "src/images/Healthcare.jpg",
     // impact: "500+ people served"
   },
   {
@@ -108,7 +108,7 @@ const workProjects = [
     title: "Education for All",
     description: "Scholarships and educational support for underprivileged children",
     category: "Education",
-    image: "/images/Education.jpg",
+    image: "src/images/Education.jpg",
     // impact: "200+ students supported"
   },
   {
@@ -116,7 +116,7 @@ const workProjects = [
   title: "Community Orientation Program",
   description: "Educational orientation sessions on health, hygiene, and community development",
   category: "Education",
-  image: "/images/Social welfare.jpg",
+  image: "src/images/Social welfare.jpg",
   // impact: "500+ community members oriented"
 },
   {
@@ -124,7 +124,7 @@ const workProjects = [
     title: "Women Empowerment",
     description: "Skill development and entrepreneurship programs for women",
     category: "Social Welfare",
-    image: "/images/womenemp.jpg",
+    image: "src/images/womenemp.jpg",
     // impact: "150+ women trained"
   },
   {
@@ -132,7 +132,7 @@ const workProjects = [
     title: "Tree Plantation Drive",
     description: "Large-scale tree plantation to combat climate change",
     category: "Environment",
-    image: "/images/plantation.jpg",
+    image: "src/images/plantation.jpg",
     // impact: "5000+ trees planted"
   },
   {
@@ -307,7 +307,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               >
                 <div className="w-40 h-56 rounded-xl border-4 border-yellow-500 mx-auto mb-4 overflow-hidden">
                   <img
-                    src="/images/Rtn-Umamahesha-A.jpg"
+                    src="src/images/Rtn-Umamahesha-A.jpg"
                     alt="Umamahesha A"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -326,7 +326,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               >
                 <div className="w-40 h-56 rounded-xl border-4 border-yellow-500 mx-auto mb-4 overflow-hidden">
                   <img
-                    src="/images/Rtn-Vijaya-Kumari-N.jpg"
+                    src="src/images/Rtn-Vijaya-Kumari-N.jpg"
                     alt="Vijayakumari N"
                     className="w-full h-full object-cover"
                     onError={(e) => {
