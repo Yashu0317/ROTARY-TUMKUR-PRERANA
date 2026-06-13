@@ -42,7 +42,7 @@ const mockOfficers: DistrictOfficer[] = [
     name: 'Umamahesha A',
     title: 'PRESIDENT',
     club_name: 'Rotary Tumkur Prerana',
-    photo_url: '/src/images/Rtn-Umamahesha-A.jpg',
+    photo_url: '/images/Rtn-Umamahesha-A.jpg',
     order_position: 1
   },
   {
@@ -50,7 +50,7 @@ const mockOfficers: DistrictOfficer[] = [
     name: 'Vijayakumari N',
     title: 'SECRETARY',
     club_name: 'Rotary Tumkur Prerana',
-    photo_url: '/src/images/Rtn-Vijaya-Kumari-N.jpg',
+    photo_url: '/images/Rtn-Vijaya-Kumari-N.jpg',
     order_position: 2
   },
 ];
@@ -100,7 +100,7 @@ const workProjects = [
     title: "Community Health Camp",
     description: "Free health checkups and medical camps for underserved communities",
     category: "Healthcare",
-    image: "/src/images/Healthcare.jpg",
+    image: "/images/Healthcare.jpg",
     // impact: "500+ people served"
   },
   {
@@ -108,7 +108,7 @@ const workProjects = [
     title: "Education for All",
     description: "Scholarships and educational support for underprivileged children",
     category: "Education",
-    image: "/src/images/Education.jpg",
+    image: "/images/Education.jpg",
     // impact: "200+ students supported"
   },
   {
@@ -116,7 +116,7 @@ const workProjects = [
   title: "Community Orientation Program",
   description: "Educational orientation sessions on health, hygiene, and community development",
   category: "Education",
-  image: "/src/images/Social welfare.jpg",
+  image: "/images/Social welfare.jpg",
   // impact: "500+ community members oriented"
 },
   {
@@ -124,7 +124,7 @@ const workProjects = [
     title: "Women Empowerment",
     description: "Skill development and entrepreneurship programs for women",
     category: "Social Welfare",
-    image: "/src/images/womenemp.jpg",
+    image: "/images/womenemp.jpg",
     // impact: "150+ women trained"
   },
   {
@@ -132,7 +132,7 @@ const workProjects = [
     title: "Tree Plantation Drive",
     description: "Large-scale tree plantation to combat climate change",
     category: "Environment",
-    image: "/src/images/plantation.jpg",
+    image: "/images/plantation.jpg",
     // impact: "5000+ trees planted"
   },
   {
@@ -140,7 +140,7 @@ const workProjects = [
     title: "Disaster Relief",
     description: "Emergency aid and support during natural calamities",
     category: "Relief",
-    image: "/src/images/relief.jpg",
+    image: "/images/relief.jpg",
     // impact: "1000+ families helped"
   }
 ];
@@ -307,11 +307,11 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               >
                 <div className="w-40 h-56 rounded-xl border-4 border-yellow-500 mx-auto mb-4 overflow-hidden">
                   <img
-                    src="/src/images/Rtn-Umamahesha-A.jpg"
+                    src="/images/Rtn-Umamahesha-A.jpg"
                     alt="Umamahesha A"
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.currentTarget.src = '/src/images/Rtn-Umamahesha-A.jpg';
+                      e.currentTarget.src = '/images/Rtn-Umamahesha-A.jpg';
                     }}
                   />
                 </div>
@@ -326,11 +326,11 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               >
                 <div className="w-40 h-56 rounded-xl border-4 border-yellow-500 mx-auto mb-4 overflow-hidden">
                   <img
-                    src="/src/images/Rtn-Vijaya-Kumari-N.jpg"
+                    src="/images/Rtn-Vijaya-Kumari-N.jpg"
                     alt="Vijayakumari N"
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.currentTarget.src = '/src/images/Rtn-Vijaya-Kumari-N.jpg';
+                      e.currentTarget.src = '/images/Rtn-Vijaya-Kumari-N.jpg';
                     }}
                   />
                 </div>
