@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Logo + About */}
           <div>
             <img
-              src="src/images/Logo-2.png"
+              src="/src/images/Logo-2.png"
               alt="Rotary Tumkur Prerana Logo"
               className="w-24 mb-4 rounded-md"
             />
