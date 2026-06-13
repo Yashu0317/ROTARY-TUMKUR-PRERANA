@@ -50,7 +50,7 @@ const mockOfficers: DistrictOfficer[] = [
     name: 'Vijayakumari N',
     title: 'SECRETARY',
     club_name: 'Rotary Tumkur Prerana',
-    photo_url: 'src/images/Rtn-Vijaya-Kumari-N.jpg',
+    photo_url: 'images/Rtn-Vijaya-Kumari-N.jpg',
     order_position: 2
   },
 ];
@@ -61,7 +61,7 @@ const mockProjects: ClubProject[] = [
     title: 'Community Cleanup',
     description: 'Helping clean up local parks and public spaces',
     category: 'Environment',
-    image_url: 'src/images/environment1.jpg',
+    image_url: 'images/environment1.jpg',
     created_at: new Date().toISOString()
   },
   {
@@ -69,7 +69,7 @@ const mockProjects: ClubProject[] = [
     title: 'Education Support',
     description: 'Providing educational materials to underprivileged children',
     category: 'Education',
-    image_url: 'src/images/education.jpg',
+    image_url: 'images/education.jpg',
     created_at: new Date().toISOString()
   },
 ];
@@ -100,7 +100,7 @@ const workProjects = [
     title: "Community Health Camp",
     description: "Free health checkups and medical camps for underserved communities",
     category: "Healthcare",
-    image: "src/images/Healthcare.jpg",
+    image: "images/Healthcare.jpg",
     // impact: "500+ people served"
   },
   {
@@ -108,7 +108,7 @@ const workProjects = [
     title: "Education for All",
     description: "Scholarships and educational support for underprivileged children",
     category: "Education",
-    image: "src/images/Education.jpg",
+    image: "images/Education.jpg",
     // impact: "200+ students supported"
   },
   {
@@ -116,7 +116,7 @@ const workProjects = [
   title: "Community Orientation Program",
   description: "Educational orientation sessions on health, hygiene, and community development",
   category: "Education",
-  image: "src/images/Social welfare.jpg",
+  image: "images/Social welfare.jpg",
   // impact: "500+ community members oriented"
 },
   {
@@ -124,7 +124,7 @@ const workProjects = [
     title: "Women Empowerment",
     description: "Skill development and entrepreneurship programs for women",
     category: "Social Welfare",
-    image: "src/images/womenemp.jpg",
+    image: "images/womenemp.jpg",
     // impact: "150+ women trained"
   },
   {
@@ -132,7 +132,7 @@ const workProjects = [
     title: "Tree Plantation Drive",
     description: "Large-scale tree plantation to combat climate change",
     category: "Environment",
-    image: "src/images/plantation.jpg",
+    image: "images/plantation.jpg",
     // impact: "5000+ trees planted"
   },
   {
@@ -250,7 +250,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           {/* Images Row */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
             <img
-              src="/src/images/ClubBanner.png"
+              src="/images/ClubBanner.png"
               alt="Rotary Banner"
               className="rounded-2xl shadow-xl"
               style={{
@@ -264,7 +264,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             />
 
             <img
-              src="/src/images/ClubAdvirtisment.png"
+              src="/images/ClubAdvirtisment.png"
               alt="Rotary Logo"
               className="rounded-2xl shadow-xl"
               style={{
@@ -307,7 +307,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               >
                 <div className="w-40 h-56 rounded-xl border-4 border-yellow-500 mx-auto mb-4 overflow-hidden">
                   <img
-                    src="src/images/Rtn-Umamahesha-A.jpg"
+                    src="images/Rtn-Umamahesha-A.jpg"
                     alt="Umamahesha A"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -326,7 +326,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               >
                 <div className="w-40 h-56 rounded-xl border-4 border-yellow-500 mx-auto mb-4 overflow-hidden">
                   <img
-                    src="src/images/Rtn-Vijaya-Kumari-N.jpg"
+                    src="images/Rtn-Vijaya-Kumari-N.jpg"
                     alt="Vijayakumari N"
                     className="w-full h-full object-cover"
                     onError={(e) => {
