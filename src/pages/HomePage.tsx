@@ -61,7 +61,7 @@ const mockProjects: ClubProject[] = [
     title: 'Community Cleanup',
     description: 'Helping clean up local parks and public spaces',
     category: 'Environment',
-    image_url: '',
+    image_url: 'src/images/environment1.jpg',
     created_at: new Date().toISOString()
   },
   {
@@ -69,7 +69,7 @@ const mockProjects: ClubProject[] = [
     title: 'Education Support',
     description: 'Providing educational materials to underprivileged children',
     category: 'Education',
-    image_url: '',
+    image_url: 'src/images/education.jpg',
     created_at: new Date().toISOString()
   },
 ];
@@ -250,7 +250,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           {/* Images Row */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
             <img
-              src="src/images/ClubBanner.png"
+              src="/src/images/ClubBanner.png"
               alt="Rotary Banner"
               className="rounded-2xl shadow-xl"
               style={{
@@ -264,7 +264,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             />
 
             <img
-              src="src/images/ClubAdvirtisment.png"
+              src="/src/images/ClubAdvirtisment.png"
               alt="Rotary Logo"
               className="rounded-2xl shadow-xl"
               style={{

@@ -148,7 +148,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
             onClick={() => handleNavigation('home')}
           >
             <img
-              src="/src/images/logo1.png"
+              src="E:\ROTARY TUMKUR PRERANA\src\images\logo1.png"
               alt="Rotary Logo"
               className="h-16 w-16 object-contain"
             />
