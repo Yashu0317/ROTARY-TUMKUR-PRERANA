@@ -16,7 +16,7 @@ interface CommitteeMember {
   updated_at: string;
 }
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = '/api';
 
 export default function CommitteePage() {
   const [members, setMembers] = useState<CommitteeMember[]>([]);
@@ -359,7 +359,7 @@ function getImageUrl(imageUrl?: string, name?: string): string {
   
   // If it's a relative path, make it absolute
   if (imageUrl.startsWith('/')) {
-    return `http://localhost:5000${imageUrl}`;
+    return `${imageUrl}`;
   }
   
   return imageUrl;

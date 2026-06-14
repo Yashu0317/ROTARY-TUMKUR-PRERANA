@@ -22,8 +22,8 @@ try {
 
 // ✅ Middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({limit: '900mb' }));
+app.use(express.urlencoded({limit: '900mb',  extended: true }));
 
 // ✅ Ensure uploads directories exist
 const uploadDirs = ['uploads/images', 'uploads/pdfs', 'uploads/others'];
@@ -72,7 +72,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 10 * 1024 * 1024 } // 10 MB
+  limits: { fileSize: 1000 * 1024 * 1024 } // 10 MB
 });
 
 // ✅ File upload endpoint

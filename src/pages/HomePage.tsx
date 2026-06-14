@@ -39,7 +39,7 @@ interface HomePageProps {
 const mockOfficers: DistrictOfficer[] = [
   {
     id: 1,
-    name: 'Umamahesha A',
+    name: 'Rtn. Umamahesha A',
     title: 'PRESIDENT',
     club_name: 'Rotary Tumkur Prerana',
     photo_url: '/images/Rtn-Umamahesha-A.jpg',
@@ -47,7 +47,7 @@ const mockOfficers: DistrictOfficer[] = [
   },
   {
     id: 2,
-    name: 'Vijayakumari N',
+    name: 'Rtn. Vijayakumari N',
     title: 'SECRETARY',
     club_name: 'Rotary Tumkur Prerana',
     photo_url: 'images/Rtn-Vijaya-Kumari-N.jpg',
@@ -315,7 +315,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     }}
                   />
                 </div>
-                <h3 className="text-xl font-bold text-blue-900 mb-2">Umamahesha A</h3>
+                <h3 className="text-xl font-bold text-blue-900 mb-2">Rtn.Umamahesha A</h3>
                 <p className="text-gray-600 mb-4 font-semibold">PRESIDENT</p>
               </div>
 
@@ -334,7 +334,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                     }}
                   />
                 </div>
-                <h3 className="text-xl font-bold text-blue-900 mb-2">Vijayakumari N</h3>
+                <h3 className="text-xl font-bold text-blue-900 mb-2">Rtn.Vijayakumari N</h3>
                 <p className="text-gray-600 mb-4 font-semibold">SECRETARY</p>
               </div>
             </div>

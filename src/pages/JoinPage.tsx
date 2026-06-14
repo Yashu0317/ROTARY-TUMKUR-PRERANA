@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // import { supabase } from '../supabaseClient';
 import { Send } from 'lucide-react';
-import logo from '/src/images/logo1.png'; // adjust path if needed
+import logo from '/images/logo1.png'; // adjust path if needed
 
 interface JoinPageProps {
   onNavigate: (page: string) => void;

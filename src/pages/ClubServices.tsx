@@ -19,7 +19,7 @@ interface CommunityService {
   updated_at: string;
 }
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = '/api';
 
 export default function CommunityServicePage({ onNavigate }: { onNavigate: (page: string) => void }) {
   const [services, setServices] = useState<CommunityService[]>([]);

@@ -85,7 +85,7 @@ interface CommitteeMember {
 
 type AdminItem = Event | Newsletter | ClubProject | CommitteeMember;
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = '/api';
 
 function getTabTitle(tab: string): string {
   switch (tab) {
@@ -200,7 +200,7 @@ function ItemRow({
     if (!imageUrl || imageUrl.includes('undefined')) return '/default-avatar.png';
     
     if (imageUrl.startsWith('/')) {
-      return `http://localhost:5000${imageUrl}`;
+      return `${imageUrl}`;
     }
     
     return imageUrl;
@@ -441,7 +441,7 @@ function ItemForm({
     if (!imageUrl || imageUrl.includes('undefined')) return '/default-avatar.png';
     
     if (imageUrl.startsWith('/')) {
-      return `http://localhost:5000${imageUrl}`;
+      return `${imageUrl}`;
     }
     
     if (imageUrl.startsWith('blob:')) {
