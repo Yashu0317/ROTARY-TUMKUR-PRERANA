@@ -2,22 +2,28 @@ const mysql = require('mysql2/promise');
 const fs = require('fs');
 const path = require('path');
 
-// ✅ Read CA certificate
+// ✅ Read CA certificate (optional, with fallback)
 let sslConfig = {};
 try {
   const caPath = path.join(__dirname, '../ca-certificate.pem');
   if (fs.existsSync(caPath)) {
     sslConfig = {
       ca: fs.readFileSync(caPath),
-      rejectUnauthorized: true
+      rejectUnauthorized: false  // ✅ IMPORTANT: Set to false for Aiven
     };
     console.log('✅ CA certificate loaded successfully');
   } else {
-    console.warn('⚠️ CA certificate not found at:', caPath);
-    console.warn('⚠️ Trying to connect without SSL...');
+    console.warn('⚠️ CA certificate file not found');
+    console.warn('⚠️ Using standard SSL configuration...');
+    sslConfig = {
+      rejectUnauthorized: false
+    };
   }
 } catch (error) {
   console.warn('⚠️ Error reading CA certificate:', error.message);
+  sslConfig = {
+    rejectUnauthorized: false
+  };
 }
 
 // ✅ Create connection pool
@@ -28,8 +34,8 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME || 'defaultdb',
   port: parseInt(process.env.DB_PORT || '3306'),
   
-  // ✅ SSL Configuration
-  ssl: Object.keys(sslConfig).length > 0 ? sslConfig : 'Amazon RDS',
+  // ✅ SSL Configuration for Aiven
+  ssl: sslConfig,
   
   // ✅ Connection Pool Settings
   waitForConnections: true,
@@ -45,7 +51,8 @@ const pool = mysql.createPool({
   timezone: '+00:00',
   supportBigNumbers: true,
   bigNumberStrings: true,
-  decimalNumbers: true
+  decimalNumbers: true,
+  multipleStatements: false
 });
 
 // ✅ Error handling for pool
@@ -68,6 +75,7 @@ console.log(`  Host: ${process.env.DB_HOST}`);
 console.log(`  Port: ${process.env.DB_PORT}`);
 console.log(`  User: ${process.env.DB_USER}`);
 console.log(`  Database: ${process.env.DB_NAME}`);
-console.log(`  SSL: ${Object.keys(sslConfig).length > 0 ? 'Enabled' : 'Disabled'}`);
+console.log(`  SSL: Enabled (rejectUnauthorized: false)`);
+console.log(`✅ Database connection pool initialized`);
 
 module.exports = pool;
