@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
+const pool = require('./config/database');
 require('dotenv').config();
 
 const app = express();
@@ -200,6 +201,18 @@ app.get('/api', (req, res) => {
     },
     version: '1.0.0'
   });
+});
+
+// Example usage
+app.get('/api/test-connection', async (req, res) => {
+  try {
+    const connection = await pool.getConnection();
+    const [rows] = await connection.query('SELECT 1 as test');
+    connection.release();
+    res.json({ message: 'Database connected successfully!', result: rows });
+  } catch (error) {
+    res.status(500).json({ error: 'Database connection failed', details: error.message });
+  }
 });
 
 // ✅ Global error handler
