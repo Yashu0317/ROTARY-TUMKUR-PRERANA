@@ -1,23 +1,50 @@
 // lib/api.ts
 
-const API_BASE_URL = '/api';
+// ✅ Get API base URL from environment or use defaults
+const getApiBaseUrl = (): string => {
+  // Production: Use Render backend URL
+  if (import.meta.env.MODE === 'production') {
+    return import.meta.env.VITE_API_URL 
+      ? `${import.meta.env.VITE_API_URL}/api`
+      : 'https://rotary-tumkur-prerana-1.onrender.com/api';
+  }
+  
+  // Development: Use localhost
+  return import.meta.env.VITE_API_URL 
+    ? `${import.meta.env.VITE_API_URL}/api`
+    : 'http://localhost:5000/api';
+};
+
+const API_BASE_URL = getApiBaseUrl();
+
+console.log('🔗 API Base URL:', API_BASE_URL);
+
 export const api = {
   // Generic fetch helper
   async request(endpoint: string, options: RequestInit = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
-    const response = await fetch(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
-      ...options,
-    });
+    
+    try {
+      const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          ...options.headers,
+        },
+        ...options,
+      });
 
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status} ${response.statusText}`);
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status} ${response.statusText}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      console.error('❌ API Request Failed:', {
+        url,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      });
+      throw error;
     }
-
-    return response.json();
   },
 
   // Calendar endpoints
@@ -69,17 +96,32 @@ export const api = {
 
   // Upload endpoints
   upload: {
-    file: (file: File, type: 'image' | 'pdf') => {
+    file: (file: File, type?: 'image' | 'pdf') => {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('type', type);
+      if (type) {
+        formData.append('type', type);
+      }
       
       return fetch(`${API_BASE_URL}/upload`, {
         method: 'POST',
         body: formData,
-      }).then(response => response.json());
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Upload error: ${response.status}`);
+          }
+          return response.json();
+        })
+        .catch(error => {
+          console.error('❌ Upload Failed:', error.message);
+          throw error;
+        });
     },
   },
 };
+
+// ✅ Export API URL for debugging
+export const getApiUrl = () => API_BASE_URL;
 
 export default api;
