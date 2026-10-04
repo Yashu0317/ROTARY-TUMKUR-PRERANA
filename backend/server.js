@@ -12,6 +12,8 @@ const app = express();
 // ✅ Middleware
 app.use(cors({
   origin: [
+    'https://rotary-tumkur-prerana.org',
+    'https://www.rotary-tumkur-prerana.org',
     'https://rotary-tumkur-prerana-frontend.onrender.com',
     'http://localhost:5173',
     'http://localhost:3000'
