@@ -236,6 +236,32 @@ app.use((error, req, res, next) => {
   });
 });
 
+// ✅ Create tables if they don't exist
+async function initDatabase() {
+  try {
+    await pool.execute(`
+      CREATE TABLE IF NOT EXISTS committee_members (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        position VARCHAR(255) NOT NULL DEFAULT 'Member',
+        image_url VARCHAR(500) NULL,
+        category VARCHAR(100) NOT NULL DEFAULT 'board_of_directors',
+        email VARCHAR(255) NULL,
+        phone VARCHAR(50) NULL,
+        bio TEXT NULL,
+        position_order INT NOT NULL DEFAULT 0,
+        is_active BOOLEAN NOT NULL DEFAULT TRUE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    `);
+    console.log('✅ committee_members table ready');
+  } catch (error) {
+    console.error('❌ Database init failed:', error.message);
+  }
+}
+initDatabase();
+
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
